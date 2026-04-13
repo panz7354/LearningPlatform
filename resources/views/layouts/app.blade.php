@@ -65,6 +65,12 @@
             margin: 0;
         }
 
+        .nav-menu{
+            display: block;
+            padding: 15px 50px;
+            margin: 50px;
+        }
+
         .nav-header {
             padding: 15px 20px;
             cursor: pointer;
@@ -80,13 +86,13 @@
         }
 
         .sub-menu {
-            display: none;             /* 關鍵：預設不顯示 */
-            background-color: #a0b2c8; /* 子選單背景顏色稍微做區隔 */
+            display: none;             /*關鍵：預設不顯示*/
+            background-color: #a0b2c8; /*子選單背景顏色稍微做區隔*/
         }
 
         .sub-menu li a {
             display: block;
-            padding: 10px 20px 10px 40px; /* 左邊 padding 給多一點，製造內縮的效果 */
+            padding: 10px 20px 10px 40px; /*左邊 padding 給多一點，製造內縮的效果*/
             color: white;
             text-decoration: none;
             transition: background-color 0.3s;
@@ -97,7 +103,7 @@
         }
 
         /* ==== 搭配 JavaScript 使用的互動 class ==== */
-        /* 當子選單被加上 active class 時，改為顯示 */
+        /* 當子選單被加上 active class 時，改為顯示*/
         .sub-menu.active {
             display: block;
         }
@@ -125,7 +131,7 @@
         <div class="logo">LOGO</div>
         <nav class="nav-links">
             <a href="/">首頁</a>
-            <a href="/lesson">單元學習</a>
+            <a href="lesson0">單元學習</a>
             <a href="#">程式實作</a>
             <a href="#">互動測驗</a>
         </nav>
@@ -137,11 +143,14 @@
             <ul class="nav-menu">
                 <li class="nav-item">
                     <div class="nav-header">
-                        0. 基本概念 <span class="arrow">▼</span>
+                        第0章 Pygame 套件介紹 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">0.1 簡介</a></li>
-                        <li><a href="#">0.2 環境建置</a></li>
+                        <li><a href="lesson0">1. Pygame套件概述</a></li>
+                        <li><a href="lesson0">2. pygame.midi的核心概念</a></li>
+                        <li><a href="lesson0">3. 常見程式碼與邏輯說明</a></li>
+                        <li><a href="lesson0">4. 整體程式邏輯</a></li>
+                        <li><a href="lesson0">5. 範例程式說明</a></li>
                     </ul>
                 </li>
 
@@ -150,8 +159,8 @@
                         1. 變數與資料型態 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">1.1 變數宣告</a></li>
-                        <li><a href="#">1.2 基本資料型態</a></li>
+                        <li><a href="lesson1">1.1 變數宣告</a></li>
+                        <li><a href="lesson1">1.2 基本資料型態</a></li>
                     </ul>
                 </li>
 
@@ -160,8 +169,8 @@
                         2. 變數與資料型態 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">1.1 變數宣告</a></li>
-                        <li><a href="#">1.2 基本資料型態</a></li>
+                        <li><a href="lesson2">1.1 變數宣告</a></li>
+                        <li><a href="lesson2">1.2 基本資料型態</a></li>
                     </ul>
                 </li>
 
@@ -170,8 +179,8 @@
                         3. 變數與資料型態 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">1.1 變數宣告</a></li>
-                        <li><a href="#">1.2 基本資料型態</a></li>
+                        <li><a href="lesson3">1.1 變數宣告</a></li>
+                        <li><a href="lesson3">1.2 基本資料型態</a></li>
                     </ul>
                 </li>
 
@@ -180,8 +189,8 @@
                         4. 變數與資料型態 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">1.1 變數宣告</a></li>
-                        <li><a href="#">1.2 基本資料型態</a></li>
+                        <li><a href="lesson4">1.1 變數宣告</a></li>
+                        <li><a href="lesson4">1.2 基本資料型態</a></li>
                     </ul>
                 </li>
 
@@ -190,8 +199,8 @@
                         5. 變數與資料型態 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="#">1.1 變數宣告</a></li>
-                        <li><a href="#">1.2 基本資料型態</a></li>
+                        <li><a href="lesson5">1.1 變數宣告</a></li>
+                        <li><a href="lesson5">1.2 基本資料型態</a></li>
                     </ul>
                 </li>
             </ul>
