@@ -190,13 +190,13 @@
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson3">3. 變數與資料型態</a>
+                        <a href="lesson3">第3章 函數</a>
                     </div>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson4">4. 變數與資料型態</a>
+                        <a href="lesson4">第4章 物件導向程式設計</a>
                     </div>
                 </li>
 
