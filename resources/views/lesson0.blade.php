@@ -149,7 +149,7 @@
         <h3 style="margin-top: 20px">學習目標：</h3>
         <div class="af">
             <a href="#section2-1" >1. Pygame套件概述</a>
-            <a href="#section2-2" >2. pygame.midi的核心概念</a>
+            <a href="#section2-2" >2. pygame.midi概念</a>
             <a href="#section2-3" >3. 常見程式碼與邏輯說明</a>
             <a href="#section2-4" >4. 整體程式邏輯</a>
             <a href="#section2-5" >5. 範例程式說明</a>

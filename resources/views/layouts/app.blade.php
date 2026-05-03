@@ -57,6 +57,7 @@
             background-color: #8da1b9;
             overflow-y: auto;
             color: white;
+            flex-shrink: 0; /* 新增這行：防止側邊欄在 flex 容器中被壓縮變窄 */
         }
 
         .sidebar ul {
@@ -67,11 +68,12 @@
 
         .nav-menu{
             display: block;
-            padding: 15px 50px;
-            margin: 50px;
+            padding: 0;
+            margin: 20px 0; /* 留一點上下間距即可，左右間距靠 nav-header 控制 */
         }
 
         .nav-header {
+
             padding: 15px 20px;
             cursor: pointer;
             display: flex;
@@ -81,46 +83,20 @@
             transition: background-color 0.3s;
         }
 
-        .nav-header:hover {
-            background-color: #7b90a8; /* 滑鼠移過去時的顏色變化 */
-        }
-
-        .sub-menu {
-            display: none;             /*關鍵：預設不顯示*/
-            background-color: #a0b2c8; /*子選單背景顏色稍微做區隔*/
-        }
-
-        .sub-menu li a {
+        .nav-header a {
             display: block;
-            padding: 10px 20px 10px 40px; /*左邊 padding 給多一點，製造內縮的效果*/
             color: white;
             text-decoration: none;
             transition: background-color 0.3s;
         }
 
-        .sub-menu li a:hover {
-            background-color: #6a829e;
+        .nav-header:hover {
+            background-color: #7b90a8; /* 滑鼠移過去時的顏色變化 */
         }
 
-        /* ==== 搭配 JavaScript 使用的互動 class ==== */
-        /* 當子選單被加上 active class 時，改為顯示*/
-        .sub-menu.active {
-            display: block;
-        }
-
-        /* 箭頭旋轉動畫 */
-        .arrow {
-            transition: transform 0.3s ease;
-            font-size: 12px;
-        }
-
-        /* 當標題被點擊展開時，箭頭旋轉 180 度 */
-        .nav-header.active .arrow {
-            transform: rotate(-180deg);
-        }
         .main-content {
-            flex: 1;
-            overflow-y: auto;
+            flex: 1;            /* 佔滿側邊欄右邊的所有剩餘空間 */
+            overflow-y: auto;   /* 讓主要內容區可以獨立上下滾動 */
         }
 
         /* ==== 漢堡按鈕基礎樣式 (桌機版預設隱藏) ==== */
@@ -196,65 +172,38 @@
             <ul class="nav-menu">
                 <li class="nav-item">
                     <div class="nav-header">
-                        第0章 Pygame 套件介紹 <span class="arrow">▼</span>
+                        <a href="lesson0">第0章 Pygame 套件介紹</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson0">1. Pygame套件概述</a></li>
-                        <li><a href="lesson0">2. pygame.midi的核心概念</a></li>
-                        <li><a href="lesson0">3. 常見程式碼與邏輯說明</a></li>
-                        <li><a href="lesson0">4. 整體程式邏輯</a></li>
-                        <li><a href="lesson0">5. 範例程式說明</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        第1章	數值、字串與串列 <span class="arrow">▼</span>
+                        <a href="lesson1">第1章	數值、字串與串列</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson1">1.1 數值運算與字串處理</a></li>
-                        <li><a href="lesson1">1.2 串列與相關處理函數</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        2. 變數與資料型態 <span class="arrow">▼</span>
+                        <a href="lesson2">第2章 選擇性敘述與迴圈</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson2">1.1 變數宣告</a></li>
-                        <li><a href="lesson2">1.2 基本資料型態</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        3. 變數與資料型態 <span class="arrow">▼</span>
+                        <a href="lesson3">3. 變數與資料型態</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson3">1.1 變數宣告</a></li>
-                        <li><a href="lesson3">1.2 基本資料型態</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        4. 變數與資料型態 <span class="arrow">▼</span>
+                        <a href="lesson4">4. 變數與資料型態</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson4">1.1 變數宣告</a></li>
-                        <li><a href="lesson4">1.2 基本資料型態</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        5. 變數與資料型態 <span class="arrow">▼</span>
+                        <a href="lesson5">5. 變數與資料型態</a>
                     </div>
-                    <ul class="sub-menu">
-                        <li><a href="lesson5">1.1 變數宣告</a></li>
-                        <li><a href="lesson5">1.2 基本資料型態</a></li>
-                    </ul>
                 </li>
             </ul>
         </nav>
@@ -266,19 +215,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- 原本的側邊欄子選單開關邏輯 ---
-            const headers = document.querySelectorAll('.nav-header');
-            headers.forEach(header => {
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const subMenu = this.nextElementSibling;
-                    if (subMenu) {
-                        subMenu.classList.toggle('active');
-                    }
-                });
-            });
-
-            // --- 新增：漢堡按鈕開關邏輯 ---
+            // --- 漢堡按鈕開關邏輯 ---
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const sidebar = document.querySelector('.sidebar');
 
