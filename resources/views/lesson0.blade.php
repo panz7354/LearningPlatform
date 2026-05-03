@@ -9,7 +9,7 @@
             margin-top: 50px;
             padding-left: 40px;
         }
-        h1, p{
+        p{
             padding: 10px 40px;
         }
         .learn{
@@ -61,11 +61,89 @@
             font-family: inherit;
             color: inherit;
         }
+
+        /* 標題與播放器的容器 */
+        .header-container {
+            display: flex;
+            justify-content: space-between; /* 標題在左，播放器在右 */
+            align-items: center;           /* 垂直置中 */
+            padding: 20px 40px;            /* 配合您原本的 padding */
+        }
+
+        .audio-player-simple {
+            background: #fff;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-player-simple span {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* 縮小播放器尺寸 */
+        .audio-player-simple audio {
+            height: 50px;
+            width: 300px;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* 1. 標題與播放器改為上下堆疊 */
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start; /* 靠左對齊 */
+                padding: 20px 15px;      /* 縮減左右間距 */
+                gap: 15px;               /* 標題和播放器增加一點垂直距離 */
+            }
+
+            /* 2. 學習目標選單改為垂直排列 */
+            .af {
+                flex-direction: column;
+                gap: 15px; /* 每個連結之間的上下距離 */
+                padding-left: 20px;
+            }
+
+            /* 3. 縮小整體內外邊距，把空間還給文字 */
+            .content {
+                padding: 20px 15px;
+            }
+
+            h3, h4, p {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            table {
+                margin-left: 0;
+                width: 100%;    /* 讓表格撐滿手機畫面 */
+            }
+
+            pre {
+                margin: 15px 0; /* 取消程式碼區塊兩側的 40px margin */
+            }
+
+            .learn {
+                padding: 10px 15px 30px;
+            }
+        }
     </style>
 @endsection
 
 @section('content')
-    <h1>第0章 Pygame 套件介紹</h1>
+    <div class="header-container">
+        <h1>第0章 Pygame 套件介紹</h1>
+
+        <div class="audio-player-simple">
+            <span>範例音檔：</span>
+            <audio controls>
+                <source src="{{ asset('audio/0_do-re-mi.mp3') }}" type="audio/mpeg">
+                您的瀏覽器不支援播放
+            </audio>
+        </div>
+    </div>
 
     <div class="learn">
         <h3 style="margin-top: 20px">學習目標：</h3>

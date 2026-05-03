@@ -122,6 +122,54 @@
             flex: 1;
             overflow-y: auto;
         }
+
+        /* ==== 漢堡按鈕基礎樣式 (桌機版預設隱藏) ==== */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           手機與平板版 RWD 設定 (寬度小於 768px)
+           ========================================= */
+        @media screen and (max-width: 768px) {
+            /* 1. 導覽列排版：讓 LOGO 和漢堡按鈕分居左右 */
+            .navbar {
+                flex-wrap: wrap; /* 允許換行 */
+            }
+
+            /* 2. 顯示漢堡按鈕 */
+            .hamburger-btn {
+                display: block;
+            }
+
+            /* 3. 預設隱藏頂部的連結與登入按鈕 (可選，讓畫面更乾淨) */
+            .nav-links, .login-btn {
+                display: none;
+            }
+
+            /* 4. 修改 container 變為上下排列 */
+            .container {
+                flex-direction: column;
+                overflow: auto;
+            }
+
+            /* 5. 側邊欄預設隱藏，改為 100% 寬度 */
+            .sidebar {
+                display: none; /* 關鍵：手機版預設看不到 */
+                width: 100%;
+                border-bottom: 3px solid #6a829e;
+            }
+
+            /* 6. 當側邊欄加上 show-menu 類別時才顯示 (搭配 JS) */
+            .sidebar.show-menu {
+                display: block;
+            }
+        }
     </style>
     @yield('style')
 </head>
@@ -129,6 +177,11 @@
 
     <header class="navbar">
         <div class="logo">LOGO</div>
+
+        <button class="hamburger-btn" id="hamburger-btn">
+            ☰
+        </button>
+
         <nav class="nav-links">
             <a href="/">首頁</a>
             <a href="lesson0">單元學習</a>
@@ -156,11 +209,11 @@
 
                 <li class="nav-item">
                     <div class="nav-header">
-                        1. 變數與資料型態 <span class="arrow">▼</span>
+                        第1章	數值、字串與串列 <span class="arrow">▼</span>
                     </div>
                     <ul class="sub-menu">
-                        <li><a href="lesson1">1.1 變數宣告</a></li>
-                        <li><a href="lesson1">1.2 基本資料型態</a></li>
+                        <li><a href="lesson1">1.1 數值運算與字串處理</a></li>
+                        <li><a href="lesson1">1.2 串列與相關處理函數</a></li>
                     </ul>
                 </li>
 
@@ -212,24 +265,26 @@
     </div>
 
     <script>
-        // 確保網頁元素都載入完成後才執行
         document.addEventListener('DOMContentLoaded', function() {
-            // 抓取所有可以被點擊的主標題
+            // --- 原本的側邊欄子選單開關邏輯 ---
             const headers = document.querySelectorAll('.nav-header');
-
             headers.forEach(header => {
                 header.addEventListener('click', function() {
-                    // 1. 切換標題本身的 active class (用來旋轉箭頭)
                     this.classList.toggle('active');
-
-                    // 2. 找到這個標題緊接著的下一個元素 (也就是 sub-menu)
                     const subMenu = this.nextElementSibling;
-
-                    // 3. 切換子選單的 active class (用來顯示/隱藏)
                     if (subMenu) {
                         subMenu.classList.toggle('active');
                     }
                 });
+            });
+
+            // --- 新增：漢堡按鈕開關邏輯 ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sidebar = document.querySelector('.sidebar');
+
+            // 當點擊漢堡按鈕時，切換 sidebar 的 'show-menu' class
+            hamburgerBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('show-menu');
             });
         });
     </script>

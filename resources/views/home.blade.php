@@ -16,6 +16,27 @@
             border-width: 3px;
             border-color:white;
         }
+
+        /* =========================================
+           手機與平板版 RWD 設定 (寬度小於 768px)
+           ========================================= */
+        @media screen and (max-width: 768px) {
+            /* 縮小最外層的留白 */
+            .main {
+                padding: 15px;
+            }
+
+            /* 針對內層使用 inline-style 的 div 強制縮小 padding */
+            .main > div {
+                padding: 20px !important;
+            }
+
+            /* 確保圖片不會超出螢幕 */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     </style>
 @endsection
 
