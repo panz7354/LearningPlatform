@@ -4,146 +4,278 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>教學網站</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #4f86c6;
+            --primary-light: #dbeafe;
+            --primary-dark: #2d6aa8;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --bg-page: #f0f4f8;
+            --bg-white: #ffffff;
+            --bg-sidebar: #ffffff;
+            --sidebar-hover: #eef4fc;
+            --sidebar-active: #dbeafe;
+            --sidebar-active-border: #4f86c6;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-white: #ffffff;
+            --border: #e2e8f0;
+            --navbar-bg: #ffffff;
+            --navbar-height: 64px;
+            --sidebar-width: 260px;
+            --radius: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
         body {
-            margin: 0;
-            font-family: sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
-        .header {
-            background-color: #8da1b9;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
+
+        /* ===== NAVBAR ===== */
         .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--navbar-height);
+            background: var(--navbar-bg);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background-color: #8da1b9;
-            padding: 15px 30px;
-            color: white;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 16px;
         }
 
-        .login-btn{
-            background-color: #8fa5c1;
-            cursor: pointer;
-            padding: 10px 20px;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .login-btn:hover{
-            background-color: #7b90a8;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, var(--primary) 0%, #7cb9f4 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .nav-links a {
-            margin: 0 15px;
-            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
             text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+            white-space: nowrap;
         }
 
-        .container {
+        .nav-links a:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .nav-links a.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .navbar-right {
             display: flex;
-            flex: 1; /* 填滿剩餘高度 */
+            align-items: center;
+            gap: 10px;
+        }
+
+        .login-btn {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 20px;
+            background: var(--primary);
+            color: var(--text-white);
+            border: none;
+            border-radius: 8px;
+            transition: background 0.18s, transform 0.12s;
+            white-space: nowrap;
+        }
+
+        .login-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 8px;
+            line-height: 1;
+            transition: background 0.15s;
+        }
+
+        .hamburger-btn:hover {
+            background: var(--bg-page);
+        }
+
+        /* ===== LAYOUT ===== */
+        .layout {
+            display: flex;
+            flex: 1;
             overflow: hidden;
+            height: calc(100vh - var(--navbar-height));
         }
 
+        /* ===== SIDEBAR ===== */
         .sidebar {
-            width: 250px;
-            background-color: #8da1b9;
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
             overflow-y: auto;
-            color: white;
-            flex-shrink: 0; /* 新增這行：防止側邊欄在 flex 容器中被壓縮變窄 */
+            flex-shrink: 0;
+            padding: 16px 0;
         }
 
-        .sidebar ul {
-            list-style-type: none;
+        .sidebar-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            padding: 8px 20px 4px;
+        }
+
+        .nav-menu {
+            list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .nav-menu{
-            display: block;
-            padding: 0;
-            margin: 20px 0; /* 留一點上下間距即可，左右間距靠 nav-header 控制 */
+        .nav-item {
+            margin: 2px 10px;
         }
 
         .nav-header {
-
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .nav-header a {
-            display: block;
-            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
             text-decoration: none;
-            transition: background-color 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 9px 12px;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
         }
 
-        .nav-header:hover {
-            background-color: #7b90a8; /* 滑鼠移過去時的顏色變化 */
+        .nav-header a:hover {
+            background: var(--sidebar-hover);
+            color: var(--primary);
         }
 
+        .nav-header a.active {
+            background: var(--sidebar-active);
+            color: var(--primary-dark);
+            border-left-color: var(--sidebar-active-border);
+            font-weight: 700;
+        }
+
+        .nav-chapter-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--bg-page);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .nav-header a:hover .nav-chapter-num,
+        .nav-header a.active .nav-chapter-num {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* ===== MAIN CONTENT ===== */
         .main-content {
-            flex: 1;            /* 佔滿側邊欄右邊的所有剩餘空間 */
-            overflow-y: auto;   /* 讓主要內容區可以獨立上下滾動 */
+            flex: 1;
+            overflow-y: auto;
+            background: var(--bg-page);
         }
 
-        /* ==== 漢堡按鈕基礎樣式 (桌機版預設隱藏) ==== */
-        .hamburger-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        /* =========================================
-           手機與平板版 RWD 設定 (寬度小於 768px)
-           ========================================= */
+        /* ===== RWD ===== */
         @media screen and (max-width: 768px) {
-            /* 1. 導覽列排版：讓 LOGO 和漢堡按鈕分居左右 */
-            .navbar {
-                flex-wrap: wrap; /* 允許換行 */
-            }
+            .nav-links { display: none; }
 
-            /* 2. 顯示漢堡按鈕 */
-            .hamburger-btn {
-                display: block;
-            }
+            .hamburger-btn { display: flex; align-items: center; justify-content: center; }
 
-            /* 3. 預設隱藏頂部的連結與登入按鈕 (可選，讓畫面更乾淨) */
-            .nav-links, .login-btn {
-                display: none;
-            }
-
-            /* 4. 修改 container 變為上下排列 */
-            .container {
+            .layout {
                 flex-direction: column;
-                overflow: auto;
+                height: auto;
+                overflow: visible;
             }
 
-            /* 5. 側邊欄預設隱藏，改為 100% 寬度 */
             .sidebar {
-                display: none; /* 關鍵：手機版預設看不到 */
+                display: none;
                 width: 100%;
-                border-bottom: 3px solid #6a829e;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 8px 0;
             }
 
-            /* 6. 當側邊欄加上 show-menu 類別時才顯示 (搭配 JS) */
-            .sidebar.show-menu {
-                display: block;
+            .sidebar.show-menu { display: block; }
+
+            .main-content {
+                overflow-y: visible;
             }
         }
     </style>
@@ -152,11 +284,13 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">LOGO</div>
-
-        <button class="hamburger-btn" id="hamburger-btn">
-            ☰
-        </button>
+        <div class="navbar-left">
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="開啟選單">☰</button>
+            <a href="/" class="logo">
+                <div class="logo-icon">🎵</div>
+                PyMusic
+            </a>
+        </div>
 
         <nav class="nav-links">
             <a href="/">首頁</a>
@@ -164,45 +298,62 @@
             <a href="#">程式實作</a>
             <a href="#">互動測驗</a>
         </nav>
-        <button class="login-btn">登入</button>
+
+        <div class="navbar-right">
+            <button class="login-btn">登入</button>
+        </div>
     </header>
 
-    <div class="container">
-        <nav class="sidebar">
+    <div class="layout">
+        <nav class="sidebar" id="sidebar">
+            <p class="sidebar-section-title">課程目錄</p>
             <ul class="nav-menu">
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson0">第0章 Pygame 套件介紹</a>
+                        <a href="lesson0">
+                            <span class="nav-chapter-num">0</span>
+                            Pygame 套件介紹
+                        </a>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson1">第1章	數值、字串與串列</a>
+                        <a href="lesson1">
+                            <span class="nav-chapter-num">1</span>
+                            數值、字串與串列
+                        </a>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson2">第2章 選擇性敘述與迴圈</a>
+                        <a href="lesson2">
+                            <span class="nav-chapter-num">2</span>
+                            選擇性敘述與迴圈
+                        </a>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson3">第3章 函數</a>
+                        <a href="lesson3">
+                            <span class="nav-chapter-num">3</span>
+                            函數
+                        </a>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson4">第4章 物件導向程式設計</a>
+                        <a href="lesson4">
+                            <span class="nav-chapter-num">4</span>
+                            物件導向程式設計
+                        </a>
                     </div>
                 </li>
-
                 <li class="nav-item">
                     <div class="nav-header">
-                        <a href="lesson5">5. 變數與資料型態</a>
+                        <a href="lesson5">
+                            <span class="nav-chapter-num">5</span>
+                            變數與資料型態
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -213,15 +364,76 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- 漢堡按鈕開關邏輯 ---
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const sidebar = document.querySelector('.sidebar');
+    {{-- ===== 回頂部按鈕 ===== --}}
+    <button id="back-to-top" title="回到頂部" aria-label="回到頂部">↑</button>
 
-            // 當點擊漢堡按鈕時，切換 sidebar 的 'show-menu' class
-            hamburgerBtn.addEventListener('click', function() {
+    <style>
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: var(--primary);
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+            box-shadow: 0 2px 10px rgba(79,134,198,0.35);
+            transition: background 0.15s, opacity 0.2s, transform 0.15s;
+        }
+        #back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ===== 漢堡選單 =====
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sidebar = document.getElementById('sidebar');
+            hamburgerBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('show-menu');
+            });
+
+            // ===== 自動標記 active 連結 =====
+            const currentPath = window.location.pathname.replace(/^\//, '') || '/';
+            document.querySelectorAll('.nav-header a, .nav-links a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === '/')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // ===== 回頂部按鈕 =====
+            const topBtn = document.getElementById('back-to-top');
+
+            // 你的 layout 是 .main-content 在捲動，不是 window
+            // 手機版 RWD 時改為 window 捲動，所以兩個都監聽
+            function handleScroll(el) {
+                const scrollTop = el === window ? window.scrollY : el.scrollTop;
+                topBtn.style.display = scrollTop > 300 ? 'block' : 'none';
+            }
+
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                mainContent.addEventListener('scroll', () => handleScroll(mainContent));
+            }
+            window.addEventListener('scroll', () => handleScroll(window));
+
+            // 點擊後捲回頂部（同時處理兩種情境）
+            topBtn.addEventListener('click', function () {
+                if (mainContent && mainContent.scrollTop > 0) {
+                    mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             });
         });
     </script>
