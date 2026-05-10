@@ -11,7 +11,7 @@
     <div class="lesson-header">
         <h1>第 2 章　流程控制、選擇性敘述與迴圈</h1>
         <div class="audio-wrap">
-            <span>🎵 範例音檔</span>
+            <span>範例音檔</span>
             <audio controls>
                 <source src="{{ asset('audio/2_London_Bridge.mp3') }}" type="audio/mpeg">
                 您的瀏覽器不支援播放

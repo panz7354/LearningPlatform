@@ -11,7 +11,7 @@
     <div class="lesson-header">
         <h1>第 4 章　物件導向程式設計</h1>
         <div class="audio-wrap">
-            <span>🎵 範例音檔</span>
+            <span>範例音檔</span>
             <audio controls>
                 <source src="{{ asset('audio/4_bell.mp3') }}" type="audio/mpeg">
                 您的瀏覽器不支援播放

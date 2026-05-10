@@ -8,6 +8,12 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* 關鍵：讓 html 和 body 都不捲動，捲動交給 .main-content */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         :root {
             --primary: #4f86c6;
             --primary-light: #dbeafe;
@@ -38,7 +44,7 @@
             color: var(--text-main);
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100%;
         }
 
         /* ===== NAVBAR ===== */
@@ -254,6 +260,7 @@
 
         /* ===== RWD ===== */
         @media screen and (max-width: 768px) {
+            html, body { overflow: visible; height: auto; }
             .nav-links { display: none; }
 
             .hamburger-btn { display: flex; align-items: center; justify-content: center; }

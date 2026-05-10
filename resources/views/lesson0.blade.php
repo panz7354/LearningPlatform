@@ -11,7 +11,7 @@
     <div class="lesson-header">
         <h1>第 0 章　Pygame 套件介紹</h1>
         <div class="audio-wrap">
-            <span>🎵 範例音檔</span>
+            <span>範例音檔</span>
             <audio controls>
                 <source src="{{ asset('audio/0_do-re-mi.mp3') }}" type="audio/mpeg">
                 您的瀏覽器不支援播放

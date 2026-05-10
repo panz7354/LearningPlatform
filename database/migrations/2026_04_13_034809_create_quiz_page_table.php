@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quiz_page', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('users')->OnDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->OnDelete('cascade')->onUpdate('cascade');
             $table->integer('unit_no');
             $table->string('q_type', 10);
             $table->text('question_text');
