@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('_lesson-styles')
+    @include('layouts._lesson-styles')
 @endsection
 
 @section('content')
@@ -196,7 +196,6 @@ fruits.append("orange")
 print("目前共有", len(fruits), "個水果")</pre>
 
         <h4>範例(二)：使用串列播放小星星旋律</h4>
-        <a href="/practice/1" class="start-btn">✏️ 進入第 1 章程式實作</a>
         <img src="{{ asset('img/star.png') }}" alt="小星星五線譜">
         <p>
             此行五線譜是《小星星》的第一句旋律，此行歌詞為一閃一閃亮晶晶（Twinkle, twinkle, little star）<br><br>

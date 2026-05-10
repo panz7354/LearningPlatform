@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('_lesson-styles')
+    @include('layouts._lesson-styles')
 @endsection
 
 @section('content')

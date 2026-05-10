@@ -8,7 +8,6 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* 關鍵：讓 html 和 body 都不捲動，捲動交給 .main-content */
         html, body {
             height: 100%;
             overflow: hidden;
@@ -79,18 +78,6 @@
             color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.3px;
-        }
-
-        .logo-icon {
-            width: 34px;
-            height: 34px;
-            background: linear-gradient(135deg, var(--primary) 0%, #7cb9f4 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
         }
 
         .nav-links {
@@ -293,17 +280,14 @@
     <header class="navbar">
         <div class="navbar-left">
             <button class="hamburger-btn" id="hamburger-btn" aria-label="開啟選單">☰</button>
-            <a href="/" class="logo">
-                <div class="logo-icon">🎵</div>
-                PyMusic
-            </a>
+            <a href="/" class="logo">PyMusic</a>
         </div>
 
         <nav class="nav-links">
             <a href="/">首頁</a>
             <a href="lesson0">單元學習</a>
             <a href="#">程式實作</a>
-            <a href="#">互動測驗</a>
+            <a href="/quiz">互動測驗</a>
         </nav>
 
         <div class="navbar-right">
