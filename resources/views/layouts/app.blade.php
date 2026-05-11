@@ -8,6 +8,7 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* 關鍵：讓 html 和 body 都不捲動，捲動交給 .main-content */
         html, body {
             height: 100%;
             overflow: hidden;
@@ -111,6 +112,32 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .user-greeting {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            white-space: nowrap;
+        }
+
+        .logout-btn {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 7px 16px;
+            background: transparent;
+            color: #64748b;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            white-space: nowrap;
+        }
+        .logout-btn:hover {
+            background: #fee2e2;
+            color: #b91c1c;
+            border-color: #fca5a5;
         }
 
         .login-btn {
@@ -291,7 +318,17 @@
         </nav>
 
         <div class="navbar-right">
-            <button class="login-btn">登入</button>
+            @if(session('user_id'))
+                {{-- 已登入：顯示姓名 + 登出 --}}
+                <span class="user-greeting">👤 {{ session('user_name') }}</span>
+                <form method="POST" action="/logout" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="logout-btn">登出</button>
+                </form>
+            @else
+                {{-- 未登入：顯示登入按鈕 --}}
+                <a href="/login" class="login-btn">登入</a>
+            @endif
         </div>
     </header>
 

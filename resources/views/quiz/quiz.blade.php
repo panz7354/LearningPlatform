@@ -325,8 +325,9 @@
         <div class="options-group" id="options-{{ $q->id }}">
             @foreach($q->options_array as $opt)
             <button class="option-btn"
-                    onclick="submitAnswer({{ $q->id }}, '{{ addslashes($opt) }}', '{{ addslashes($q->correct_answer) }}', this)"
-                    data-value="{{ $opt }}">
+                    data-qid="{{ $q->id }}"
+                    data-value="{{ $opt }}"
+                    data-correct="{{ $q->correct_answer }}">
                 {{ $opt }}
             </button>
             @endforeach
@@ -395,9 +396,10 @@
         answered[qid] = true;
         answeredCount++;
 
+        // TF 題：直接比對全文（是/否）
+        // MC 題：比對選項開頭字母（A/B/C）
         const isCorrect = selected.trim() === correct.trim() ||
-                          // MC 題：selected 可能是 "B.str(10)"，只比對開頭字母
-                          selected.trim().charAt(0) === correct.trim();
+                  selected.trim().charAt(0) === correct.trim().charAt(0);
 
         // 鎖定所有選項
         const btns = document.querySelectorAll(`#options-${qid} .option-btn`);
@@ -405,7 +407,7 @@
             btn.disabled = true;
             const val = btn.getAttribute('data-value').trim();
             // 標記正確答案按鈕
-            if (val.charAt(0) === correct.trim() || val === correct.trim()) {
+            if (val.trim() === correct.trim() || val.trim().charAt(0) === correct.trim().charAt(0)) {
                 btn.classList.add('correct-ans');
             }
         });
@@ -534,5 +536,17 @@
     function retryQuiz() {
         location.reload();
     }
+
+    // 用事件委派取代 onclick，避免引號衝突
+    document.querySelectorAll('.options-group').forEach(group => {
+        group.addEventListener('click', function(e) {
+            const btn = e.target.closest('.option-btn');
+            if (!btn || btn.disabled) return;
+            const qid     = btn.dataset.qid;
+            const val     = btn.dataset.value;
+            const correct = btn.dataset.correct;
+            submitAnswer(qid, val, correct, btn);
+        });
+    });
 </script>
 @endsection
