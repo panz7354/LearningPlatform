@@ -79,10 +79,6 @@
         gap: 8px;
     }
 
-    .section-card h2 .icon {
-        font-size: 22px;
-    }
-
     .divider {
         border: none;
         border-top: 1.5px solid #e2e8f0;
@@ -119,11 +115,6 @@
         text-align: center;
         color: #94a3b8;
         padding: 40px;
-    }
-
-    .flow-img-placeholder .ph-icon {
-        font-size: 40px;
-        margin-bottom: 10px;
     }
 
     .flow-img-placeholder p {
@@ -222,14 +213,13 @@
 
     {{-- ===== 學習流程圖 ===== --}}
     <div class="section-card">
-        <h2><span class="icon">🗺️</span> 學習流程圖</h2>
+        <h2></span> 學習流程圖</h2>
         <hr class="divider">
         <div class="flow-img-wrap">
             {{-- 有圖片時把 placeholder 刪掉，取消下面那行的註解即可 --}}
             {{-- <img src="{{ asset('img/flow.jpg') }}" alt="學習流程圖"> --}}
             <div class="flow-img-placeholder">
-                <div class="ph-icon">🖼️</div>
-                <p>流程圖尚未上傳<br>請將圖片放置於 <code>public/img/</code> 並更新路徑</p>
+                <p>流程圖尚未上傳</p>
             </div>
         </div>
     </div>
