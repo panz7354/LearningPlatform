@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PracticeController;
 
 // ===== 首頁 =====
 Route::get('/', function () {
@@ -26,6 +27,11 @@ Route::get('/lesson2', function () { return view('lesson/lesson2'); });
 Route::get('/lesson3', function () { return view('lesson/lesson3'); });
 Route::get('/lesson4', function () { return view('lesson/lesson4'); });
 Route::get('/lesson5', function () { return view('lesson/lesson5'); });
+
+// ===== 程式實作 =====
+Route::get('/practice',         [PracticeController::class, 'index']);
+Route::get('/practice/{unit}',  [PracticeController::class, 'show']);
+Route::post('/practice/{unit}', [PracticeController::class, 'judge']);
 
 // ===== 互動測驗 =====
 Route::get('/quiz',        [QuizController::class, 'index']);

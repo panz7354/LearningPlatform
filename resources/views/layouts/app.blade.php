@@ -81,6 +81,18 @@
             letter-spacing: -0.3px;
         }
 
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, var(--primary) 0%, #7cb9f4 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
         .nav-links {
             display: flex;
             align-items: center;
@@ -152,6 +164,7 @@
             border-radius: 8px;
             transition: background 0.18s, transform 0.12s;
             white-space: nowrap;
+            text-decoration: none;
         }
 
         .login-btn:hover {
@@ -307,13 +320,15 @@
     <header class="navbar">
         <div class="navbar-left">
             <button class="hamburger-btn" id="hamburger-btn" aria-label="開啟選單">☰</button>
-            <a href="/" class="logo">PyMusic</a>
+            <a href="/" class="logo">
+                PyMusic
+            </a>
         </div>
 
         <nav class="nav-links">
             <a href="/">首頁</a>
             <a href="lesson0">單元學習</a>
-            <a href="#">程式實作</a>
+            <a href="/practice">程式實作</a>
             <a href="/quiz">互動測驗</a>
         </nav>
 

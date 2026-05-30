@@ -39,6 +39,7 @@
             font-size: 22px;
             font-weight: 800;
             color: #4f86c6;
+            text-decoration: none;
         }
 
         .login-title {
@@ -144,7 +145,7 @@
 <div class="login-card">
 
     <div class="login-logo">
-        <span class="logo-text">PyMusic</span>
+        <a href="/" class="logo-text">PyMusic</a>
     </div>
 
     <h1 class="login-title">歡迎回來</h1>
