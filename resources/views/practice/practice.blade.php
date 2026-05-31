@@ -112,6 +112,7 @@
     .code-line {
         display: flex;
         align-items: center;
+        padding: 20px 10px;
     }
 
     .code-line:hover {
@@ -119,7 +120,7 @@
     }
 
     .line-num {
-        width: 28px;
+        width: 32px;
         color: #94a3b8;
         font-size: 12px;
         user-select: none;
@@ -135,8 +136,7 @@
         flex-wrap: wrap;
         gap: 2px;
         color: #c10000;
-        white-space: pre-wrap;
-        word-break: break-all;
+        white-space: nowrap;
     }
 
     /* ===== 填空輸入框 ===== */
@@ -320,30 +320,28 @@
                 <span class="line-num">{{ $lineNum + 1 }}</span>
                 <span class="line-content">
                 @if(str_contains($line, '___'))
-                    @php
-                        // 一行可能有多個 ___，先切開
-                        $parts = explode('___', $line);
-                    @endphp
-                    @foreach($parts as $pi => $part)
-                        {{-- 縮排用空白要保留 --}}
-                        {{ $part }}
-                        @if($pi < count($parts) - 1)
-                            <input
-                                class="blank-input"
-                                type="text"
-                                data-index="{{ $blankIndex }}"
-                                id="blank-{{ $blankIndex }}"
-                                placeholder="填入程式碼"
-                                autocomplete="off"
-                                spellcheck="false"
-                            >
-                            <span class="correct-hint" id="hint-{{ $blankIndex }}"></span>
-                            @php $blankIndex++; @endphp
-                        @endif
-                    @endforeach
-                @else
-                    {{ $line }}
-                @endif
+                @php
+                    $parts = explode('___', $line);
+                @endphp
+                @foreach($parts as $pi => $part)
+                    {!! str_replace(' ', '&nbsp;', htmlspecialchars($part)) !!}
+                    @if($pi < count($parts) - 1)
+                        <input
+                            class="blank-input"
+                            type="text"
+                            data-index="{{ $blankIndex }}"
+                            id="blank-{{ $blankIndex }}"
+                            placeholder="填入程式碼"
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <span class="correct-hint" id="hint-{{ $blankIndex }}"></span>
+                        @php $blankIndex++; @endphp
+                    @endif
+                @endforeach
+            @else
+                {!! str_replace(' ', '&nbsp;', htmlspecialchars($line)) !!}
+            @endif
                 </span>
             </div>
             @endforeach
