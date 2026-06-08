@@ -134,6 +134,13 @@
         padding: 0;
     }
 
+    .lesson-content h5 {
+        font-size: 13px;
+        font-weight: 700;
+        color: #4f86c6;
+        margin: 14px 0 4px;
+    }
+
     /* ===== 段落文字 ===== */
     .lesson-content p {
         font-size: 15px;

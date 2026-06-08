@@ -217,10 +217,10 @@
         <hr class="divider">
         <div class="flow-img-wrap">
             {{-- 有圖片時把 placeholder 刪掉，取消下面那行的註解即可 --}}
-            {{-- <img src="{{ asset('img/flow.jpg') }}" alt="學習流程圖"> --}}
-            <div class="flow-img-placeholder">
+            <img src="{{ asset('img/learning.PNG') }}" alt="學習流程圖">
+            {{-- <div class="flow-img-placeholder">
                 <p>流程圖尚未上傳</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 

@@ -135,7 +135,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 2px;
-        color: #c10000;
+        color: #07008c;
         white-space: nowrap;
     }
 

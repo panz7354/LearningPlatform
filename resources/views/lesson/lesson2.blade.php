@@ -9,7 +9,7 @@
 
     {{-- ===== 標題列 ===== --}}
     <div class="lesson-header">
-        <h1>第 2 章　流程控制、選擇性敘述與迴圈</h1>
+        <h1>第 2 章 流程控制、選擇性敘述與迴圈</h1>
         <div class="audio-wrap">
             <span>範例音檔</span>
             <audio controls>
@@ -35,31 +35,88 @@
 
         <h3>重點語法</h3>
 
-        <h4>(一) if-else 條件判斷</h4>
+        <h4>(一) 什麼是條件判斷？</h4>
+        <p>條件判斷可以想成：「程式在做選擇題」。</p>
+        <p>
+            程式會先判斷條件是否成立，<br>
+            再決定要做什麼事情。
+        </p>
+        <p>例如：<br><br>
+            • 如果今天下雨 ☔ → 要記得帶雨傘<br>
+            • 如果今天不會下雨 ☔ → 不用帶雨傘<br>
+            • 如果肚子餓 🍔 → 去吃飯<br>
+            • 如果按下播放鍵 🎵 → 播放音樂
+        </p>
+        <p>這些都屬於「條件判斷」。</p>
+
+        <h4>(二) if-else 條件判斷</h4>
         <pre>if 條件:
     條件成立時執行的程式
 else:
     條件不成立時執行的程式</pre>
-        <p>此語法用來根據條件判斷結果，執行不同程式區塊。</p>
+        <p>
+            簡單理解：<br>
+            👉 <strong>if</strong>表示：「如果…」<br>
+            👉 <strong>else</strong>表示：「不然就…」<br>
+            程式會根據條件：選擇不同的結果。
+        </p>
 
-        <h4>(二) if / elif / else 條件判斷</h4>
+        <h5>📌 生活小舉例(判斷成績是否及格)</h5>
+        <p>程式碼如下：</p>
+        <pre>score = 80
+
+if score >= 60:
+    print("及格")
+else:
+    print("不及格")</pre>
         <p>
-            程式會「由上往下」判斷：<br>
-            　　1. 先檢查 if<br>
-            　　2. 不成立 → 檢查 elif<br>
-            　　3. 都不成立 → 執行 else<br>
-            並且「只會執行其中一個區塊」。
-        </p><br>
+            程式邏輯說明：<br>
+            如果：score >= 60成立，就輸出：及格<br>
+            否則輸出：不及格
+        </p>
+
+        <h4>(三) if / elif / else 條件判斷</h4>
         <p>
-            <strong>if 條件：</strong><br>
-            　　✔ 如果條件成立 → 執行程式<br>
-            　　✔ 如果不成立 → 跳過<br>
-            <strong>elif 條件：</strong><br>
-            　　✔ 可以有很多個 elif<br>
-            　　✔ 只要有一個條件成立，就會執行，後面就不再判斷<br>
-            <strong>else：</strong><br>
-            　　✔ 當以上條件都不成立時，執行最後的情況<br>
-            　　✔ 不需要寫條件，代表「其他所有情況」
+            有時候：不只兩種情況，而是很多種選擇。<br>
+            這時可以使用：
+        </p>
+        <table>
+            <tr><th>語法</th><th>功能</th></tr>
+            <tr><td>if</td><td>第一個條件判斷</td></tr>
+            <tr><td>elif</td><td>其他條件判斷</td></tr>
+            <tr><td>else</td><td>前面都不成立時執行</td></tr>
+        </table>
+        <p>基本語法如下：</p>
+        <pre>if 條件:
+    程式內容
+elif 條件:
+    程式內容
+else:
+    程式內容</pre>
+        <p>
+            程式判斷順序：程式會：👉「由上往下」判斷。<br>
+            順序如下：<br>
+            1️⃣ 先檢查 if<br>
+            2️⃣ if 不成立 → 檢查 elif<br>
+            3️⃣ 都不成立 → 執行 else
+        </p>
+
+        <h5>🎵 音樂情境小舉例</h5>
+        <pre>speed = 3
+
+if speed == 1:
+    print("慢速播放 🎵")
+elif speed == 2:
+    print("正常播放 🎵")
+else:
+    print("快速播放 🎵")</pre>
+        <p>
+            程式邏輯說明：<br>
+            程式會根據 speed 數字：<br>
+            1 → 慢速<br>
+            2 → 正常<br>
+            其他 → 快速<br>
+            來決定音樂的播放速度。
         </p>
 
         <hr>
@@ -68,133 +125,98 @@ else:
 
         <h4>範例(一)：判斷輸入數字的種類</h4>
         <p>
-            請撰寫一段程式，讓使用者輸入一個整數，並判斷該數字：<br>
-            　　• 正數<br>
-            　　• 0<br>
-            　　• 負數<br><br>
+            請撰寫一段程式，讓使用者輸入一個整數，並判斷該數字為：<br><br>
+            • 正數<br>
+            • 0<br>
+            • 負數<br><br>
+            並將結果顯示出來。<br><br>
             提示：<br>
-            　　• if：第一個條件判斷<br>
-            　　• elif：多條件判斷（else if）<br>
-            　　• else：其他所有情況
+            • if：第一個條件判斷<br>
+            • elif：多條件判斷（else if）<br>
+            • else：其他所有情況
         </p>
         <pre>參考程式：
+
+# 【題號1】
+# 使用 input() 讓使用者輸入一個整數
+# input() 預設取得的是字串（string）
+# 因此需要使用 int() 轉換成整數（integer）
 num = int(input("請輸入一個整數: "))
 
+# 【題號2】
+# 使用 if、elif、else 判斷數字種類
+# 第一種情況：
+# 如果數字大於 0
 if num > 0:
+    # 顯示正數訊息
     print("你輸入的是正數")
+
+# 第二種情況：
+# 如果數字等於 0
 elif num == 0:
+    # 顯示 0 的訊息
     print("你輸入的是 0")
+
+# 第三種情況：
+# 如果以上條件都不成立
+# 代表數字一定小於 0
 else:
+    # 顯示負數訊息
     print("你輸入的是負數")</pre>
+        <p><strong>程式執行結果（假設輸入）：</strong></p>
+        <pre>請輸入一個整數: -5
 
-        <h4>範例(二)：決定是否播放旋律（if-else）</h4>
+輸出：
+你輸入的是負數</pre>
+
+        <h4>範例(二)：決定是否播放旋律(if-else)</h4>
         <img src="{{ asset('img/London_Bridge.png') }}" alt="倫敦鐵橋五線譜">
         <p>
-            此行五線譜是《倫敦鐵橋》的第一句旋律，此行音符為：So La So Fa Mi Fa So<br><br>
-            請撰寫一段程式，讓使用者輸入一個整數：<br>
-            　　• 如果是偶數 → 播放音符 So（G）<br>
-            　　• 如果是奇數 → 不播放音樂，並顯示【不播放音樂】文字
-        </p>
-        <pre>參考程式：
-import time
-import pygame.midi
-
-pygame.midi.init()
-player = pygame.midi.Output(0)
-player.set_instrument(0)
-
-note_map = {"G":67}
-beat = 0.5
-
-num = int(input("請輸入一個整數: "))
-
-if num % 2 == 0:
-    print("播放 So（G）🎵")
-    midi_num = note_map["G"]
-    player.note_on(midi_num, 100)
-    time.sleep(beat)
-    player.note_off(midi_num, 100)
-else:
-    print("不播放音樂 ❌")</pre>
-
-        <h2 id="section2-2">2. for 迴圈</h2>
-
-        <h3>重點語法</h3>
-
-        <h4>(一) for 迴圈</h4>
-        <p>
-            for 迴圈是 Python 中常用的重複執行結構，主要用來依序讀取資料集合（如串列 list）中的每一個元素，並對每個元素執行相同的程式動作。基本語法如下：
-        </p>
-        <pre>for 變數 in 串列:
-    要重複執行的程式</pre>
-        <p>程式執行時，for 迴圈會從串列的第一個元素開始，依序取出每一個資料，直到所有資料都被處理完成為止。</p>
-
-        <h4>(二) 索引（index）概念</h4>
-        <p>
-            在程式中，串列（list）中的每個資料都有一個位置編號，這個編號就叫做「索引」。<br>
-            舉例：melody = ["G", "A", "G", "F"]
-        </p>
-        <table>
-            <tr><th>位置（index）</th><th>音符</th></tr>
-            <tr><td>0</td><td>G</td></tr>
-            <tr><td>1</td><td>A</td></tr>
-            <tr><td>2</td><td>G</td></tr>
-            <tr><td>3</td><td>F</td></tr>
-        </table>
-        <p>
-            <strong>重點說明</strong><br>
-            　　• i 代表「目前播放到第幾個音符」<br>
-            　　• melody[i] 用來「取出該位置的音符」，如下程式碼：
-        </p>
-        <pre>i = 1
-print(melody[i])  # 會印出 A</pre>
-
-        <hr>
-
-        <h3>範例程式說明</h3>
-
-        <h4>範例(一)：for 迴圈基礎練習</h4>
-        <p>
+            此行五線譜是《倫敦鐵橋》的第一句旋律，此行音符為 So La So Fa Mi Fa So<br><br>
+            請撰寫一段程式，完成以下功能：<br><br>
+              1. 讓使用者輸入文字：<br>
+                若輸入「Play」，則播放《倫敦鐵橋》旋律。<br>
+                若輸入其他文字，則顯示「停止播放」。<br><br>
             提示：<br>
-            　　• for：用來重複執行程式<br>
-            　　• range(1, 6)：代表從 1 到 5（不包含 6）<br>
-            　　• i：每次迴圈的數值
+            • 字串判斷：使用 if text == "Play":
         </p>
         <pre>參考程式：
-for i in range(1, 6):
-    print(i)</pre>
 
-        <h4>範例(二)：使用 for 迴圈播放旋律</h4>
-        <img src="{{ asset('img/London_Bridge.png') }}" alt="倫敦鐵橋五線譜">
-        <p>
-            此行五線譜是《倫敦鐵橋》的第一句旋律，此行音符為：So La So Fa Mi Fa So<br>
-            請撰寫一段程式，使用 for 迴圈播放《倫敦鐵橋》第一句旋律。
-        </p>
-        <pre>參考程式：
+# 【前置準備】
 import time
 import pygame.midi
 
+# 初始化 MIDI 系統
 pygame.midi.init()
 player = pygame.midi.Output(0)
 player.set_instrument(0)
 
 note_map = {
-    "G":67,
-    "A":69,
-    "F":65,
-    "E":64
+    "G": 67,   # So
+    "A": 69,   # La
+    "F": 65,   # Fa
+    "E": 64    # Mi
 }
 
 melody = ["G", "A", "G", "F", "E", "F", "G"]
-beat = 0.5
 
-print("播放《倫敦鐵橋》🎵")
+# 【題號1】
+# 讓使用者輸入指令
+command = input("請輸入指令 (輸入 Play 開始播放): ")
 
-for n in melody:
-    midi_num = note_map[n]
-    player.note_on(midi_num, 100)
-    time.sleep(beat)
-    player.note_off(midi_num, 100)</pre>
+# 判斷指令是否為 "Play"
+if command == "Play":
+    print("開始播放《倫敦鐵橋》🎵")
+    for note in melody:
+        midi_num = note_map[note]
+        player.note_on(midi_num, 100)
+        time.sleep(0.5)
+        player.note_off(midi_num, 100)
+else:
+    print("停止播放 🚫")</pre>
+
+        <h2 id="section2-2">2. for 迴圈</h2>
+        <p>此區塊可依後續提供的 Markdown 內容繼續填補 2.2 的教學語法與進階範例。</p>
 
     </div>
 </div>
