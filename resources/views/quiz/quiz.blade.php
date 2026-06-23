@@ -230,6 +230,106 @@
         cursor: not-allowed;
     }
 
+    /* ===== 心智努力量表 ===== */
+    .effort-card {
+        display: none;
+        background: #fff;
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
+        padding: 32px 36px;
+        margin-bottom: 20px;
+    }
+    .effort-card.show { display: block; }
+
+    .effort-title {
+        font-family: 'Nunito', sans-serif;
+        font-size: 17px;
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 6px;
+        text-align: center;
+    }
+    .effort-sub {
+        font-size: 13px;
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .effort-scale-wrap {
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    .effort-numbers {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .effort-numbers span {
+        font-size: 13px;
+        font-weight: 700;
+        color: #94a3b8;
+        width: 28px;
+        text-align: center;
+    }
+
+    .effort-radios {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .effort-radio-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid #cbd5e1;
+        background: #fff;
+        cursor: pointer;
+        transition: border-color 0.15s, background 0.15s, transform 0.12s;
+        flex-shrink: 0;
+    }
+    .effort-radio-btn:hover {
+        border-color: #4f86c6;
+        transform: scale(1.1);
+    }
+    .effort-radio-btn.selected {
+        border-color: #4f86c6;
+        background: #4f86c6;
+        box-shadow: 0 0 0 4px rgba(79,134,198,0.18);
+    }
+
+    .effort-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #94a3b8;
+        margin-top: 4px;
+    }
+
+    .effort-submit-btn {
+        display: block;
+        margin: 28px auto 0;
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 10px 32px;
+        background: #4f86c6;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.15s, transform 0.12s;
+    }
+    .effort-submit-btn:hover:not(:disabled) {
+        background: #2d6aa8;
+        transform: translateY(-1px);
+    }
+    .effort-submit-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
     /* ===== 分數結果 ===== */
     .result-card {
         display: none;
@@ -288,6 +388,9 @@
         .question-card { padding: 20px 18px; }
         .options-group { flex-direction: column; }
         .option-btn { width: 100%; text-align: left; }
+        .effort-card { padding: 24px 18px; }
+        .effort-radio-btn { width: 24px; height: 24px; }
+        .effort-numbers span { font-size: 11px; width: 24px; }
     }
 </style>
 @endsection
@@ -364,6 +467,35 @@
     </div>
     @endforeach
 
+    {{-- ===== 心智努力量表 ===== --}}
+    <div class="effort-card" id="effort-card">
+        <p class="effort-title">請問您在完成本次程式學習任務時，投入了多少心智努力？</p>
+        <p class="effort-sub">請點選最符合您感受的數字</p>
+
+        <div class="effort-scale-wrap">
+            <div class="effort-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <div class="effort-radios" id="effort-radios">
+                @for($i = 1; $i <= 9; $i++)
+                <button type="button" class="effort-radio-btn" data-value="{{ $i }}"></button>
+                @endfor
+            </div>
+            <div class="effort-labels">
+                <span>極低</span>
+                <span>低</span>
+                <span>中等</span>
+                <span>高</span>
+                <span>極高</span>
+            </div>
+        </div>
+
+        <button class="effort-submit-btn" id="effort-submit-btn" disabled onclick="submitEffort()">
+            送出
+        </button>
+    </div>
+
     {{-- ===== 分數結果 ===== --}}
     <div class="result-card" id="result-card">
         <div class="result-score" id="result-score">0 <span>/ {{ count($questions) }}</span></div>
@@ -386,8 +518,54 @@
         const pct = (answeredCount / totalQuestions) * 100;
         document.getElementById('progress-bar').style.width = pct + '%';
         if (answeredCount === totalQuestions) {
-            setTimeout(showResult, 600);
+            setTimeout(showEffortScale, 600);
         }
+    }
+
+    // ===== 顯示心智努力量表 =====
+    function showEffortScale() {
+        const effortCard = document.getElementById('effort-card');
+        effortCard.classList.add('show');
+        effortCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ===== 心智努力量表：選擇分數 =====
+    let selectedEffort = null;
+    document.querySelectorAll('.effort-radio-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.effort-radio-btn').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedEffort = this.dataset.value;
+            document.getElementById('effort-submit-btn').disabled = false;
+        });
+    });
+
+    // ===== 心智努力量表：送出 =====
+    function submitEffort() {
+        if (!selectedEffort) return;
+
+        // 鎖定量表
+        document.querySelectorAll('.effort-radio-btn').forEach(b => b.disabled = true);
+        document.getElementById('effort-submit-btn').disabled = true;
+
+        async function submitEffort() {
+            if (!selectedEffort) return;
+            document.querySelectorAll('.effort-radio-btn').forEach(b => b.disabled = true);
+            document.getElementById('effort-submit-btn').disabled = true;
+
+            await fetch(`/quiz/${unit}/effort`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ effort_score: selectedEffort }),
+            });
+
+            showResult();
+        }
+
+        showResult();
     }
 
     // ===== 是非 / 選擇題：作答 =====

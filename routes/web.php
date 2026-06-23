@@ -5,6 +5,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\MentalEffortController;
 
 // ===== 首頁 =====
 Route::get('/', function () {
@@ -41,3 +42,5 @@ Route::get('/quiz/{unit}', [QuizController::class, 'show']);
 Route::get('/app', function () {
     return view('layouts/app');
 });
+
+Route::post('/quiz/{unit}/effort', [MentalEffortController::class, 'store']);
