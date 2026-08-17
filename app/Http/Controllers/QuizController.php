@@ -52,4 +52,22 @@ class QuizController extends Controller
             'questions' => $questions,
         ]);
     }
+
+    // ===== 儲存測驗結果 =====
+    public function saveResult(Request $request, $unit)
+    {
+        $request->validate([
+            'score' => 'required|integer|min:0|max:100',
+        ]);
+
+        DB::table('quiz_result')->insert([
+            'user_id'    => session('user_id'),
+            'unit_id'    => $unit,
+            'score'      => $request->input('score'),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json(['status' => 'ok']);
+    }
 }

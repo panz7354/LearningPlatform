@@ -44,3 +44,4 @@ Route::get('/app', function () {
 });
 
 Route::post('/quiz/{unit}/effort', [MentalEffortController::class, 'store']);
+Route::post('/quiz/{unit}/result', [QuizController::class, 'saveResult']);

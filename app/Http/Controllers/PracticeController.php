@@ -67,7 +67,6 @@ class PracticeController extends Controller
         // 正確答案陣列
         $correctAnswers = explode(';', $practice->correct_answers);
         $totalBlanks    = count($correctAnswers);
-
         // 學生答案（從 JSON body 來）
         $userAnswers = $request->input('answers', []);
 
@@ -89,6 +88,30 @@ class PracticeController extends Controller
         }
 
         $score = round(($correct / $totalBlanks) * 100);
+
+        // ===== 儲存作答歷程 =====
+        DB::table('program_attempt_log')->insert([
+            'user_id'    => session('user_id'),   // 未登入則為 null
+            'unit_id'    => $unit,
+            'score'      => $score,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // ===== 儲存各題目作答紀錄 =====
+        $logs = [];
+        foreach ($results as $r) {
+            $logs[] = [
+                'user_id'        => session('user_id'),
+                'unit_id'        => $unit,
+                'question_id'    => $r['index'] + 1,    // 從 1 開始
+                'answer_content' => $r['user_answer'],
+                'is_correct'     => $r['is_correct'] ? 1 : 0,
+                'created_at'     => now(),
+                'updated_at'     => now(),
+            ];
+        }
+        DB::table('program_question_log')->insert($logs);
 
         return response()->json([
             'results' => $results,

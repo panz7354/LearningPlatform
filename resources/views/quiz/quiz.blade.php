@@ -508,6 +508,7 @@
 
 <script>
     // ===== 狀態管理 =====
+    const unit           = {{ $unit }};
     const totalQuestions = {{ count($questions) }};
     let answeredCount = 0;
     let correctCount  = 0;
@@ -686,15 +687,16 @@
     }
 
     // ===== 顯示分數 =====
-    function showResult() {
+    async function showResult() {
         const resultCard = document.getElementById('result-card');
         resultCard.classList.add('show');
         resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+        const pct = Math.round((correctCount / totalQuestions) * 100);
+
         document.getElementById('result-score').innerHTML =
             `${correctCount} <span>/ ${totalQuestions}</span>`;
 
-        const pct = Math.round((correctCount / totalQuestions) * 100);
         let msg, sub;
         if (pct === 100) {
             msg = '🎉 完美！全部答對！';
@@ -708,6 +710,20 @@
         }
         document.getElementById('result-msg').textContent = msg;
         document.getElementById('result-sub').textContent = sub;
+
+        // ===== 送分數到後端儲存 =====
+        try {
+            await fetch(`/quiz/${unit}/result`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ score: pct }),
+            });
+        } catch (e) {
+            console.error('分數儲存失敗', e);
+        }
     }
 
     // ===== 重新作答 =====
