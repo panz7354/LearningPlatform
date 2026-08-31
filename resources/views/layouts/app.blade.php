@@ -440,11 +440,17 @@
 
     <div class="mobile-nav">
         <a href="/">首頁</a>
-        <a href="/lesson0">單元學習</a>
+        <a href="lesson0">單元學習</a>
         <a href="/practice">程式實作</a>
         <a href="/quiz">互動測驗</a>
-        <a href="/survey/pre">前測問卷</a>
-        <a href="/survey/post">後測問卷</a>
+
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">問卷填寫 ▾</a>
+            <div class="dropdown-menu">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmsDc5PbB6mNld9iLK9FgSS_7IIZXmP-9pDG4oaxyC4YQtTQ/viewform?usp=header" target="_blank" rel="noreferrer noopener">前測問卷</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeY1EO0F5WUOSj7UpKar_gbKoz4rEFpvIIx0DIIHnwv4UpM7A/viewform?usp=header" target="_blank" rel="noreferrer noopener">後測問卷</a>
+            </div>
+        </div>
     </div>
 
     <div class="layout">
