@@ -410,7 +410,7 @@
 
         <nav class="nav-links">
             <a href="/">首頁</a>
-            <a href="lesson0">單元學習</a>
+            <a href="/lesson0">單元學習</a>
             <a href="/practice">程式實作</a>
             <a href="/quiz">互動測驗</a>
 
@@ -440,7 +440,7 @@
 
     <div class="mobile-nav">
         <a href="/">首頁</a>
-        <a href="lesson0">單元學習</a>
+        <a href="/lesson0">單元學習</a>
         <a href="/practice">程式實作</a>
         <a href="/quiz">互動測驗</a>
 
