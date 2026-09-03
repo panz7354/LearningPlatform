@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="lesson-wrap">
+<div class="lesson-wrap" data-chapter="2">
 
     {{-- ===== 標題列 ===== --}}
     <div class="lesson-header">
@@ -37,32 +37,60 @@
 
         <h4>(一) 什麼是條件判斷？</h4>
         <p>條件判斷可以想成：「程式在做選擇題」。程式會先判斷條件是否成立，再決定要做什麼事情。</p>
-        <p>例如：</p>
-        <ul>
-            <li>如果今天下雨 ☔ → 要記得帶雨傘</li>
-            <li>如果今天不會下雨 ☔ → 不用帶雨傘</li>
-            <li>如果肚子餓 🍔 → 去吃飯</li>
-            <li>如果按下播放鍵 🎵 → 播放音樂</li>
-        </ul>
+        <p>例如：<br>
+            • 如果今天下雨 ☔ → 要記得帶雨傘<br>
+            • 如果今天不會下雨 ☔ → 不用帶雨傘<br>
+            • 如果肚子餓 🍔 → 去吃飯<br>
+            • 如果按下播放鍵 🎵 → 播放音樂
+        </p>
         <p>這些都屬於「條件判斷」。</p>
 
         <h4>(二) if-else 條件判斷</h4>
+        <div class="code-block">
+        <div class="code-block-header">
+            <div class="code-block-dots">
+                <div class="code-block-dot red"></div>
+                <div class="code-block-dot yellow"></div>
+                <div class="code-block-dot green"></div>
+            </div>
+            <span class="code-block-lang">Python</span>
+        </div>
         <pre>if 條件:
     條件成立時執行的程式
 else:
     條件不成立時執行的程式</pre>
+    </div>
+
         <p>簡單理解：<br>
         👉 if 表示：「如果…」<br>
         👉 else 表示：「不然就…」<br>
         程式會根據條件，選擇不同的結果。</p>
-        <h5>音樂情境小舉例</h5>
-        <p>判斷成績是否及格，程式碼如下：</p>
-        <pre>score = 80
+
+        <div class="music-card">
+            <span class="music-card-icon">🎵</span>
+            <div class="music-card-body">
+                <p class="music-card-title">音樂情境小舉例</p>
+                <p>判斷成績是否及格，程式碼如下：</p>
+            </div>
+        </div>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>score = 80
 
 if score >= 60:
     print("及格")
 else:
     print("不及格")</pre>
+        </div>
+
+
         <p>程式邏輯說明：<br>
         如果：score >= 60 成立，就輸出：及格，否則輸出：不及格。</p>
 
@@ -75,20 +103,46 @@ else:
             <tr><td>else</td><td>前面都不成立時執行</td></tr>
         </table>
         <p>基本語法如下：</p>
-        <pre>if 條件:
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>if 條件:
     程式內容
 elif 條件:
     程式內容
 else:
     程式內容</pre>
+        </div>
+
         <p>
             程式判斷順序：程式會「由上往下」判斷。順序如下：<br>
             　　1️⃣ 先檢查 if<br>
             　　2️⃣ if 不成立 → 檢查 elif<br>
             　　3️⃣ 都不成立 → 執行 else
         </p>
-        <h5>音樂情境小舉例</h5>
-        <pre>speed = 3
+
+        <div class="music-card">
+            <span class="music-card-icon">🎵</span>
+            <div class="music-card-body">
+                <p class="music-card-title">音樂情境小舉例</p>
+            </div>
+        </div>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>speed = 3
 
 if speed == 1:
     print("慢速播放 🎵")
@@ -96,6 +150,8 @@ elif speed == 2:
     print("正常播放 🎵")
 else:
     print("快速播放 🎵")</pre>
+        </div>
+
         <p>程式邏輯說明：<br>
         程式會根據 speed 數字：1 → 慢速、2 → 正常、其他 → 快速，來決定音樂的播放速度。</p>
 

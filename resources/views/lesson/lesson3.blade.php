@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="lesson-wrap">
+<div class="lesson-wrap" data-chapter="3">
 
     {{-- ===== 標題列 ===== --}}
     <div class="lesson-header">

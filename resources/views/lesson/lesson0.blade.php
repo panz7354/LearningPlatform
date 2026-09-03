@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="lesson-wrap">
+<div class="lesson-wrap" data-chapter="0">
 
     {{-- ===== 標題列 ===== --}}
     <div class="lesson-header">
@@ -18,6 +18,9 @@
             </audio>
         </div>
     </div>
+
+    {{-- ===== 章節色條 ===== --}}
+    <div class="chap-accent-bar"></div>
 
     {{-- ===== 學習目標 ===== --}}
     <div class="lesson-goals">
@@ -85,16 +88,46 @@
 
         <h3>初始化系統</h3>
         <p>功能：啟動 MIDI 系統，初始化音樂控制的程式。</p>
-        <pre>import pygame.midi
-pygame.midi.init()</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre><span class="hl-kw">import</span> pygame.midi
+pygame.midi.<span class="hl-kw">init</span>()</pre>
+        </div>
 
         <h3>建立播放器</h3>
         <p>概念：建立一個「播放裝置」，0 代表預設裝置。可以理解為：取得一台虛擬鋼琴。</p>
-        <pre>player = pygame.midi.Output(0)</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre><span class="hl-nm">player</span> = pygame.midi.<span class="hl-kw">Output</span>(<span class="hl-nu">0</span>)</pre>
+        </div>
 
         <h3>設定樂器</h3>
         <p>功能：設定音色（樂器）。0 = 鋼琴。MIDI 有 128 種樂器（包括鋼琴、小提琴、吉他等）。</p>
-        <pre>player.set_instrument(0)</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>player.<span class="hl-kw">set_instrument</span>(<span class="hl-nu">0</span>)</pre>
+        </div>
 
         <h3>播放音符</h3>
         <p>概念：開始彈一個音。</p>
@@ -103,15 +136,45 @@ pygame.midi.init()</pre>
             <tr><td>midi_num</td><td>音高（例如 67）</td></tr>
             <tr><td>velocity</td><td>音量（0~127）</td></tr>
         </table>
-        <pre>player.note_on(midi_num, velocity)</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>player.<span class="hl-kw">note_on</span>(midi_num, velocity)</pre>
+        </div>
 
         <h3>控制時間</h3>
         <p>功能：控制音符持續多久。如果沒有這行程式碼，音符會瞬間結束（聽不到）。</p>
-        <pre>time.sleep(beat)</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>time.<span class="hl-kw">sleep</span>(beat)</pre>
+        </div>
 
         <h3>停止音符</h3>
         <p>功能：放開琴鍵，停止聲音。</p>
-        <pre>player.note_off(midi_num, velocity)</pre>
+        <div class="code-block">
+            <div class="code-block-header">
+                <div class="code-block-dots">
+                    <div class="code-block-dot red"></div>
+                    <div class="code-block-dot yellow"></div>
+                    <div class="code-block-dot green"></div>
+                </div>
+                <span class="code-block-lang">Python</span>
+            </div>
+            <pre>player.<span class="hl-kw">note_off</span>(midi_num, velocity)</pre>
+        </div>
 
         <h2 id="section0-4">4. 程式流程</h2>
         <ol>
@@ -125,61 +188,75 @@ pygame.midi.init()</pre>
 
         <h2 id="section0-5">5. 範例程式說明</h2>
 
-        <h3>範例(一)：播放 Do Re Mi</h3>
-        <p>
-            請撰寫一段程式，使用 pygame.midi 播放三個音符：
-            Do（C）→ Re（D）→ Mi（E），每個音符播放 0.5 秒。
-        </p>
-        <hr>
-        <h4>提示</h4>
-        <p>
-            • 使用 note_on() 播放音符<br>
-            • 使用 time.sleep() 控制時間<br>
-            • 使用 note_off() 停止音符<br>
-            • 不需要使用迴圈
-        </p>
-        <h4>參考程式</h4>
-        <pre>import time
-import pygame.midi
+        <div class="example-wrap">
+            <div class="example-head">範例 (一)：播放 Do Re Mi</div>
+            <div class="example-body">
+                <p>
+                    請撰寫一段程式，使用 pygame.midi 播放三個音符：<br>
+                    Do（C）→ Re（D）→ Mi（E），每個音符播放 0.5 秒。
+                </p>
+                <hr>
+                <div class="hint-block">
+                    <div class="hint-label">提示</div>
+                    <p>• 使用 note_on() 播放音符</p>
+                    <p>• 使用 time.sleep() 控制時間</p>
+                    <p>• 使用 note_off() 停止音符</p>
+                    <p>• 不需要使用迴圈</p>
+                </div>
 
-# 初始化 MIDI 系統
-pygame.midi.init()
+                <div class="code-block" style="margin-top:16px">
+                    <div class="code-block-header">
+                        <div class="code-block-dots">
+                            <div class="code-block-dot red"></div>
+                            <div class="code-block-dot yellow"></div>
+                            <div class="code-block-dot green"></div>
+                        </div>
+                        <span class="code-block-lang">參考程式</span>
+                    </div>
+                    <pre><span class="hl-kw">import</span> time
+<span class="hl-kw">import</span> pygame.midi
 
-# 建立播放器（虛擬鋼琴）
-player = pygame.midi.Output(0)
+<span class="hl-cm"># 初始化 MIDI 系統</span>
+pygame.midi.<span class="hl-kw">init</span>()
 
-# 設定樂器（0 = 鋼琴）
-player.set_instrument(0)
+<span class="hl-cm"># 建立播放器（虛擬鋼琴）</span>
+<span class="hl-nm">player</span> = pygame.midi.<span class="hl-kw">Output</span>(<span class="hl-nu">0</span>)
 
-# 音符對照表
-note_map = {
-    "C":60,  # Do
-    "D":62,  # Re
-    "E":64   # Mi
+<span class="hl-cm"># 設定樂器（0 = 鋼琴）</span>
+player.<span class="hl-kw">set_instrument</span>(<span class="hl-nu">0</span>)
+
+<span class="hl-cm"># 音符對照表</span>
+<span class="hl-nm">note_map</span> = {
+    <span class="hl-st">"C"</span>:<span class="hl-nu">60</span>,  <span class="hl-cm"># Do</span>
+    <span class="hl-st">"D"</span>:<span class="hl-nu">62</span>,  <span class="hl-cm"># Re</span>
+    <span class="hl-st">"E"</span>:<span class="hl-nu">64</span>   <span class="hl-cm"># Mi</span>
 }
 
-# 每個音播放時間
-beat = 0.5
+<span class="hl-cm"># 每個音播放時間</span>
+<span class="hl-nm">beat</span> = <span class="hl-nu">0.5</span>
 
-print("播放 Do Re Mi 🎵")
+<span class="hl-kw">print</span>(<span class="hl-st">"播放 Do Re Mi 🎵"</span>)
 
-# 播放 Do（C）
-midi_num = note_map["C"]        # 取得 C 的 MIDI 數值（60）
-player.note_on(midi_num, 100)   # 播放音符
-time.sleep(beat)                # 持續 0.5 秒
-player.note_off(midi_num, 100)  # 停止音符
+<span class="hl-cm"># 播放 Do（C）</span>
+<span class="hl-nm">midi_num</span> = note_map[<span class="hl-st">"C"</span>]        <span class="hl-cm"># 取得 C 的 MIDI 數值（60）</span>
+player.<span class="hl-kw">note_on</span>(midi_num, <span class="hl-nu">100</span>)   <span class="hl-cm"># 播放音符</span>
+time.<span class="hl-kw">sleep</span>(beat)                <span class="hl-cm"># 持續 0.5 秒</span>
+player.<span class="hl-kw">note_off</span>(midi_num, <span class="hl-nu">100</span>)  <span class="hl-cm"># 停止音符</span>
 
-# 播放 Re（D）
-midi_num = note_map["D"]
-player.note_on(midi_num, 100)
-time.sleep(beat)
-player.note_off(midi_num, 100)
+<span class="hl-cm"># 播放 Re（D）</span>
+<span class="hl-nm">midi_num</span> = note_map[<span class="hl-st">"D"</span>]
+player.<span class="hl-kw">note_on</span>(midi_num, <span class="hl-nu">100</span>)
+time.<span class="hl-kw">sleep</span>(beat)
+player.<span class="hl-kw">note_off</span>(midi_num, <span class="hl-nu">100</span>)
 
-# 播放 Mi（E）
-midi_num = note_map["E"]
-player.note_on(midi_num, 100)
-time.sleep(beat)
-player.note_off(midi_num, 100)</pre>
+<span class="hl-cm"># 播放 Mi（E）</span>
+<span class="hl-nm">midi_num</span> = note_map[<span class="hl-st">"E"</span>]
+player.<span class="hl-kw">note_on</span>(midi_num, <span class="hl-nu">100</span>)
+time.<span class="hl-kw">sleep</span>(beat)
+player.<span class="hl-kw">note_off</span>(midi_num, <span class="hl-nu">100</span>)</pre>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
