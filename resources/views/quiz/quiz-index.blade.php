@@ -246,7 +246,7 @@
                 <div class="card-score not-done">請先完成第 {{ $ch['unit'] - 1 }} 章</div>
             @elseif($hasDone)
                 <div class="card-score">
-                    得分：<span class="score-val">{{ $scoreVal }} / {{ $total }}</span>
+                    得分：<span class="score-val">{{ $scoreVal }} / 100</span>
                 </div>
             @else
                 <div class="card-score not-done">共 {{ $total }} 題，點擊開始</div>

@@ -177,14 +177,15 @@ pygame.midi.<span class="hl-kw">init</span>()</pre>
         </div>
 
         <h2 id="section0-4">4. 程式流程</h2>
-        <ol>
+        <img src="{{ asset('img/music.png') }}" alt="音符流程圖">
+        {{-- <ol>
             <li>建立音符資料</li>
             <li>迴圈取出音符</li>
             <li>轉換為 MIDI</li>
             <li>播放音符</li>
             <li>等待時間</li>
             <li>停止音符</li>
-        </ol>
+        </ol> --}}
 
         <h2 id="section0-5">5. 範例程式說明</h2>
 

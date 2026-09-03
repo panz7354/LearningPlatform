@@ -498,6 +498,34 @@
 }
 
 /* =====================================================
+   程式邏輯說明區塊（.logic-block）
+   ===================================================== */
+.logic-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #64748b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 18px;
+    margin: 8px 0 16px;
+}
+
+.logic-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.logic-block p {
+    font-size: 13.5px;
+    color: #475569 !important;
+    margin: 3px 0 !important;
+    line-height: 1.8;
+}
+
+/* =====================================================
    範例程式包裝（.example-wrap）
    ===================================================== */
 .example-wrap {

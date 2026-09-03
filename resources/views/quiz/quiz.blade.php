@@ -88,8 +88,9 @@
         font-size: 16px;
         font-weight: 600;
         color: #1e293b;
-        line-height: 1.65;
+        line-height: 1.7;
         margin-bottom: 20px;
+        white-space: pre-wrap;
     }
 
     /* ===== 是非 / 選擇 按鈕 ===== */

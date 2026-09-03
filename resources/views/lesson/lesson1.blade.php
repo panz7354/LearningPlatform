@@ -54,9 +54,8 @@
 
         <p><strong>1. 什麼是字串（string）？</strong></p>
         <p>
-            字串（string）就是「文字資料」。例如："Amy"、"倫敦鐵橋"、"嗨！"都是屬於字串。<br><br>
-            在 Python 中：文字需要用引號 " 包起來。<br>
-            如下程式碼：
+            字串（string）就是「文字資料」。例如："Amy"、"倫敦鐵橋"、"嗨！"都是屬於字串。<br>
+            在 Python 中：文字需要用引號 " 包起來，如下程式碼：
         </p>
         <div class="code-block">
             <div class="code-block-header">
@@ -69,7 +68,10 @@
             </div>
             <pre><span class="hl-nm">name</span> = <span class="hl-st">"Amy"</span></pre>
         </div>
-        <p>"Amy" 是文字資料（字串）。</p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>"Amy" 是文字資料（字串）。</p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -77,7 +79,10 @@
                 <p class="music-card-title">音樂情境小舉例</p>
                 <p>例如歌曲名稱：</p>
                 <pre><span class="hl-nm">song</span> = <span class="hl-st">"小星星"</span></pre>
-                <p>"小星星" 就是一個字串。</p>
+                <div class="logic-block" style="margin-top:10px">
+                    <div class="logic-label">程式邏輯說明</div>
+                    <p>"小星星" 就是一個字串。</p>
+                </div>
             </div>
         </div>
 
@@ -98,11 +103,10 @@
             <div class="output-label">執行結果</div>
             <div class="output-block">Hello World</div>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            "Hello" 是字串，"World" 也是字串，<br>
-            透過 + 可以把兩段文字接在一起。
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>"Hello" 是字串，"World" 也是字串，透過 + 可以把兩段文字接在一起。</p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -111,7 +115,10 @@
                 <pre><span class="hl-kw">print</span>(<span class="hl-st">"正在播放："</span> + <span class="hl-st">"小星星"</span>)</pre>
                 <p>執行結果：</p>
                 <pre>正在播放：小星星</pre>
-                <p>程式會把兩段文字合併起來。</p>
+                <div class="logic-block" style="margin-top:10px">
+                    <div class="logic-label">程式邏輯說明</div>
+                    <p>程式會把兩段文字合併起來。</p>
+                </div>
             </div>
         </div>
 
@@ -123,7 +130,7 @@
             <tr><td>"5"</td><td>字串（string）</td></tr>
             <tr><td>5</td><td>整數（int）</td></tr>
         </table>
-        <p>字串（string）就是：「文字資料」，需要使用引號 " 包起來。如下程式碼：</p>
+        <p><strong>字串（string）</strong>就是「文字資料」，需要使用引號 " 包起來。如下程式碼：</p>
         <div class="code-block">
             <div class="code-block-header">
                 <div class="code-block-dots">
@@ -135,9 +142,12 @@
             </div>
             <pre><span class="hl-nm">a</span> = <span class="hl-st">"5"</span></pre>
         </div>
-        <p>雖然看起來像數字 5，但因為有引號："5"，所以 Python 會認為它是：字串。</p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>雖然看起來像數字 5，但因為有引號"5"，所以 Python 會認為它是：<strong>字串</strong></p>
+        </div>
 
-        <p>整數（int）就是：真正可以計算的數字。如下程式碼：</p>
+        <p><strong>整數（int）</strong>就是真正可以計算的數字。如下程式碼：</p>
         <div class="code-block">
             <div class="code-block-header">
                 <div class="code-block-dots">
@@ -149,7 +159,11 @@
             </div>
             <pre><span class="hl-nm">b</span> = <span class="hl-nu">5</span></pre>
         </div>
-        <p>因為這個 5 沒有引號，所以 Python 會認為它是：數字。</p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>因為這個 5 沒有引號，所以 Python 會認為它是：<strong>數字</strong></p>
+        </div>
+
 
         <p>
             不同型態的資料，不能直接混合使用，因為：<br>
@@ -158,9 +172,9 @@
         </p>
         <p>
             因為 "5" 是屬於文字（字串），5 是屬於數字（整數），<br>
-            它們是不同種類的資料。Python 不知道該怎麼直接把它們一起運算。所以不能直接混合使用。<br><br>
-            因此要把數字和文字一起顯示，或是要讓 "5" 也能夠做加法運算，都需要先進行「型態轉換」。
-        </p>
+            它們是不同種類的資料，Python 不知道該怎麼直接把它們一起運算，所以不能直接混合使用。<br>
+            因此要把數字和文字一起顯示，或是要讓 "5" 也能夠做加法運算，都需要先進行<strong>「型態轉換」</strong>。
+        </p><br><br>
 
         <p><strong>2. str()：數字轉字串</strong></p>
         <p>str() 的功能是：把數字變成文字。如下程式碼：</p>
@@ -179,10 +193,10 @@
             <div class="output-label">執行結果</div>
             <div class="output-block">年齡是 18</div>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            18 原本是數字，str(18) 會把數字轉成文字 "18"，因此才能和前面的文字一起合併。
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>18 原本是數字，str(18) 會把數字轉成文字 "18"，因此才能和前面的文字一起合併。</p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -191,12 +205,15 @@
                 <pre><span class="hl-kw">print</span>(<span class="hl-st">"目前音量："</span> + <span class="hl-kw">str</span>(<span class="hl-nu">5</span>))</pre>
                 <p>執行結果：</p>
                 <pre>目前音量：5</pre>
-                <p>使用 str() 後，數字 5 才能和文字一起顯示。</p>
+                <div class="logic-block" style="margin-top:10px">
+                    <div class="logic-label">程式邏輯說明</div>
+                    <p>使用 str() 後，數字 5 才能和文字一起顯示。</p>
+                </div>
             </div>
         </div>
 
         <p><strong>3. int()：字串轉數字</strong></p>
-        <p>int() 的功能是：把文字數字轉成真正的數字，讓它能夠做數學計算。如下程式碼：</p>
+        <p>int() 的功能是把文字數字轉成真正的數字，讓它能夠做數學計算。如下程式碼：</p>
         <div class="code-block">
             <div class="code-block-header">
                 <div class="code-block-dots">
@@ -214,13 +231,13 @@
             <div class="output-label">執行結果</div>
             <div class="output-block">8</div>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            "5" 和 "3" 原本是文字，使用 int() 後：<br>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>"5" 和 "3" 原本是文字，使用 int() 後：<br>
               "5" → 5<br>
               "3" → 3<br>
-            因此可以進行加法運算。
-        </p>
+            因此可以進行加法運算。</p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -230,7 +247,10 @@
 <span class="hl-kw">print</span>(beat + <span class="hl-nu">1</span>)</pre>
                 <p>執行結果：</p>
                 <pre>5</pre>
-                <p>int() 可以把音樂節拍數的文字轉成真正數字，方便計算。</p>
+                <div class="logic-block" style="margin-top:10px">
+                    <div class="logic-label">程式邏輯說明</div>
+                    <p>int() 可以把音樂節拍數的文字轉成真正數字，方便計算。</p>
+                </div>
             </div>
         </div>
 
@@ -242,12 +262,12 @@
             <div class="example-head">範例 (一)：計算明年年齡並顯示結果</div>
             <div class="example-body">
                 <p>
-                    請撰寫一段程式，完成以下功能：<br><br>
+                    請撰寫一段程式，完成以下功能：<br>
                     1. 讓使用者輸入「姓名」與「年齡」<br>
                     2. 將輸入的年齡轉換為整數<br>
                     3. 計算「明年的年齡」<br>
-                    4. 輸出完整句子，例如：小明明年 19 歲
-                </p>
+                    4. 輸出完整句子，例如：小明 明年 19 歲
+                </p><br>
                 <div class="hint-block">
                     <div class="hint-label">提示</div>
                     <p>• 數值運算：age + 1（加法運算）</p>
@@ -302,11 +322,11 @@
                 <img src="{{ asset('img/star.png') }}" alt="小星星五線譜">
                 <p>
                     此行五線譜是《小星星》的第一句旋律，此行歌詞為一閃一閃亮晶晶(Twinkle, twinkle, little star)<br><br>
-                    請撰寫一段程式：<br><br>
+                    請撰寫一段程式：<br>
                     1. 輸入一個數字<br>
                     2. 設定音符播放時間（數字 × 0.5）<br>
                     3. 播放兩個音：C → G
-                </p>
+                </p><br>
                 <div class="code-block" style="margin-top:14px">
                     <div class="code-block-header">
                         <div class="code-block-dots">
@@ -383,12 +403,16 @@ C → G（Do → Sol）</div>
             </div>
             <pre><span class="hl-nm">melody</span> = [<span class="hl-st">"C"</span>, <span class="hl-st">"D"</span>, <span class="hl-st">"E"</span>]</pre>
         </div>
-        <p>
-            [] 代表建立一個串列。串列中放了 3 個音符：<br>
-            C（Do）<br>
-            D（Re）<br>
-            E（Mi）
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>
+                [　] 代表建立一個串列，串列中放了 3 個音符：<br>
+                C（Do）<br>
+                D（Re）<br>
+                E（Mi）
+            </p>
+        </div>
+
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -403,8 +427,8 @@ C → G（Do → Sol）</div>
         <h4>(二) 串列中的資料有順序</h4>
         <p>
             串列中的資料都有自己的位置。<br>
-            位置稱為：索引（index）<br>
-            Python 的索引是：從 0 開始算。如下：
+            位置稱為：<strong>索引（index）</strong><br>
+            Python 的索引是從 0 開始算。如下：
         </p>
         <table>
             <tr><th>位置(index)</th><th>資料</th></tr>
@@ -430,12 +454,14 @@ C → G（Do → Sol）</div>
             <div class="output-block">C
 D</div>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            melody[0]代表取得第 1 個音符。<br>
-            melody[1]代表取得第 2 個音符。<br>
-            雖然是第 1 個資料，但索引要從 0 開始。
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>
+                melody[0] 代表取得第 1 個音符。<br>
+                melody[1] 代表取得第 2 個音符。<br>
+                雖然是第 1 個資料，但索引要從 0 開始。
+            </p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -447,7 +473,7 @@ D</div>
         </div>
 
         <h4>(三) len()：取得串列長度</h4>
-        <p>len() 的功能是：計算串列中有幾個資料。如下程式碼：</p>
+        <p>len() 的功能是計算串列中有幾個資料。如下程式碼：</p>
         <div class="code-block">
             <div class="code-block-header">
                 <div class="code-block-dots">
@@ -464,11 +490,13 @@ D</div>
             <div class="output-label">執行結果</div>
             <div class="output-block">3</div>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            melody 串列中有：C、D、E，共 3 個資料。<br>
-            因此：len(melody) 會得到：3
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>
+                melody 串列中有：C、D、E，共 3 個資料。<br>
+                因此：len(melody) 會得到：3
+            </p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -521,11 +549,13 @@ melody[<span class="hl-nu">0</span>] = <span class="hl-st">"G"</span>
 
 <span class="hl-cm"># 修改後：["G", "D", "E"]</span></pre>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            melody[0]代表第 1 個位置。<br>
-            因此：melody[0] = "G"，會把原本的 "C" 改成 "G"。
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>
+                melody[0]代表第 1 個位置。<br>
+                因此：melody[0] = "G"，會把原本的 "C" 改成 "G"。
+            </p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -552,11 +582,13 @@ melody.<span class="hl-kw">remove</span>(<span class="hl-st">"D"</span>)
 
 <span class="hl-cm"># 刪除後：["C", "E"]</span></pre>
         </div>
-        <p>
-            程式邏輯說明：<br>
-            "D" 被刪除了。<br>
-            因此串列只剩：C、E
-        </p>
+        <div class="logic-block" style="margin-top:10px">
+            <div class="logic-label">程式邏輯說明</div>
+            <p>
+                "D" 被刪除了。<br>
+                因此串列只剩：C、E
+            </p>
+        </div>
 
         <div class="music-card">
             <span class="music-card-icon">🎵</span>
@@ -576,12 +608,12 @@ melody.<span class="hl-kw">remove</span>(<span class="hl-st">"D"</span>)
             <div class="example-head">範例 (一)：串列基本操作練習</div>
             <div class="example-body">
                 <p>
-                    請撰寫一段程式，完成以下功能：<br><br>
+                    請撰寫一段程式，完成以下功能：<br>
                     1. 建立一個串列，內容為：["apple", "banana", "cherry"]<br>
                     2. 印出串列中的第一個水果<br>
                     3. 在串列最後新增一個水果 "orange"<br>
                     4. 印出更新後的串列長度
-                </p>
+                </p><br>
                 <div class="hint-block">
                     <div class="hint-label">提示</div>
                     <p>• 串列建立：[]</p>
@@ -624,11 +656,11 @@ fruits.<span class="hl-kw">append</span>(<span class="hl-st">"orange"</span>)
                 <img src="{{ asset('img/star.png') }}" alt="小星星五線譜">
                 <p>
                     此行五線譜是《小星星》的第一句旋律，此行歌詞為一閃一閃亮晶晶(Twinkle, twinkle, little star)<br><br>
-                    請撰寫一段程式，完成以下功能：<br><br>
+                    請撰寫一段程式，完成以下功能：<br>
                     1. 建立串列：["C", "C", "G", "G"]<br>
                     2. 印出第一個音符<br>
                     3. 依序播放每個音符
-                </p>
+                </p><br>
                 <div class="code-block" style="margin-top:14px">
                     <div class="code-block-header">
                         <div class="code-block-dots">
